@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './info-message.component.html',
   styleUrl: './info-message.component.css',
+
 })
 export class InfoMessageComponent {
   get debugOutput() {

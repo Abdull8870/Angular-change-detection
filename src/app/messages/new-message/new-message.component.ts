@@ -1,5 +1,6 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, output, signal,inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MessageServcice } from '../message.service';
 
 @Component({
   selector: 'app-new-message',
@@ -9,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-message.component.css',
 })
 export class NewMessageComponent {
+  private messageService=inject(MessageServcice);
   add = output<string>();
   enteredText = signal('');
 
@@ -18,7 +20,7 @@ export class NewMessageComponent {
   }
 
   onSubmit() {
-    this.add.emit(this.enteredText());
+    this.messageService.addMessage(this.enteredText());
     this.enteredText.set('');
   }
 }
